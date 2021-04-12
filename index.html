@@ -2,6 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width">
+    <script src='file:///android_asset/app.js'></script>
 </head>
 <style>
     body {
@@ -71,8 +72,9 @@
    m = m.split(",");
     var sob;
   keyc=localStorage.getItem("key");
-  if(keyc!=null && keyc!=""){
-      eval(keyc);
+
+  if(keyc!=null && keyc!="" && keyc.indexOf("ceb4")>-1){
+     eval(keyc);
       }
       else{
       var cc=prompt("PASTE KEY");
