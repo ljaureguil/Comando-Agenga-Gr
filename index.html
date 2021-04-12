@@ -71,28 +71,44 @@
     dias = dias.split(",");
    m = m.split(",");
     var sob;
+//localStorage.removeItem("key");
   keyc=localStorage.getItem("key");
-
+//alert(keyc);
   if(keyc!=null && keyc!="" && keyc.indexOf("ceb4")>-1){
-     eval(keyc);
+     eval(keyc+";inic()");
       }
       else{
       var cc=prompt("PASTE KEY");
       u=prompt("type your password");
       cc="u='"+u+"';"+cc;
-        eval(cc);  
+     
         localStorage.setItem("key",cc);
- 
+      eval(cc+";inic()");
 
+  } 
+  var ret=false;
+  function inic(){
+  if (u.length >=4 && ac.indexOf(u)>-1){
+     var p1=keyc.split("link")[1];
+     keyc="u='"+u+"';link"+p1;
+            localStorage.setItem("key",keyc); 
+     eval(keyc);
+  //   alert(keyc);
+      start();
+      
+      }
+    else {
+        u=prompt("Wrong Password, try again");
+        inic()
+       };//
   }
-     if (ac.indexOf(u)>-1){ start();}
-    else alert("Wrong Password");
+
     var arf = [],
         orden = "";
     key = 9
  var mt="";
 
-    function start() {// alert(color);
+    function start() {
         var i = 0;
         GetJ(link, function(obj) {
             f = obj.fechas;
