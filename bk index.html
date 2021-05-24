@@ -1,0 +1,218 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+    body {
+        background-color: #ffffff;
+        font-size: 18px;
+    }
+    button {
+        font-size: 14px;
+        border-radius: 50px;
+        background: blue;
+        color: white;
+        box-shadow: -10px 10px 10px 2px rgba(0, 0, 0, .4);
+        width: 90%;
+    }
+    #todo {
+        height: 100%;
+    }
+    #clip {
+        height: 30%;
+        width: 100%;
+        background: #c3e534;
+        font-size: 15px;
+    }
+    #dfechas {
+        margin: 10px;
+        width: 95%;
+        height: 60%;
+        overflow: hidden;
+        border-style: solid;
+    }
+    .cfechas {
+        margin: 15px;
+        padding: 5px;
+        border-style: solid;
+    }
+</style>
+
+<div id="todo">Fechas Pendientes:
+
+
+    <div id="dfechas">
+
+
+    </div>
+
+    <textarea id="clip" class="centradas" readonly></textarea>
+    <br>
+</div>
+<script>
+    
+    color="rgb("+"'"+Math.random()*155+",'"+Math.random()*155+",'"+Math.random()*155+")"
+  var keyc="";
+   
+    //Called after application is started.
+    eclip = document.getElementById("clip");
+    efechas = document.getElementById("dfechas");
+
+    var m = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+    var dias = "Sunday,Monday,Tuesday,Wednesday,Thursday,Fryday,Saturday";
+    dias = dias.split(",");
+   m = m.split(",");
+    var sob;
+//localStorage.removeItem("key");
+  keyc=localStorage.getItem("key");
+//alert(keyc);
+  if(keyc!=null && keyc!="" && keyc.indexOf("ceb4")>-1){
+     eval(keyc+";inic()");
+      }
+      else{
+      var cc=prompt("PASTE KEY");
+      u=prompt("type your password");
+      cc="u='"+u+"';"+cc;
+     
+        localStorage.setItem("key",cc);
+      eval(cc+";inic()");
+
+  } 
+  var ret=false;
+  function inic(){
+  if (u.length >=4 && ac.indexOf(u)>-1){
+     var p1=keyc.split("link")[1];
+     keyc="u='"+u+"';link"+p1;
+            localStorage.setItem("key",keyc); 
+     eval(keyc);
+  //   alert(keyc);
+      start();
+      
+      }
+    else {
+        u=prompt("Wrong Password, try again");
+        inic()
+       };//
+  }
+
+    var arf = [],
+        orden = "";
+    key = 9
+ var mt="";
+
+    function start() {
+        var i = 0;
+        GetJ(link, function(obj) {
+            f = obj.fechas;
+            var ob = {};
+            for (var i = 0; i < f.length; i++) {
+                var fe = f[i];
+                var or = fe.fecha + "_" + fe.inicia + "_" + fe.termina + "_" + fe.horas + "_" + fe.direccion + "_" + fe.nota;
+                arf.push(or);
+            }
+            // 
+            arf.sort();
+            for (i = 0; i < arf.length; i++) {
+                var fe = arf[i];
+                fe = fe.split("_");
+                var fec = fe[0];
+                var hoi = fe[1];
+                var hof = fe[2];
+
+                af = fec.split("-");
+                var mo = m[af[1] * 1 - 1],
+                    y = af[0],
+                    d = af[2];
+
+                var de = new Date();
+                de.setFullYear(af[0] * 1); //alert(af[0]*1)
+                de.setMonth(af[1] * 1 - 1)
+
+                de.setDate(d * 1)
+              var dif=de.getTime()-new Date().getTime();
+                fec = mo + " " + d + "  " + y + "(" + dias[de.getDay()] + ") ";
+                if (hoi.indexOf(":") >= 0) {
+                    hoi = hoi.split(":");
+                    if (hoi[0] * 1 > 12) hoi = (hoi[0] * 1 - 12) + " PM";
+                    else hoi = hoi[0] + " AM";
+                } else {
+
+                }
+
+                if (hof.indexOf(":") >= 0) {
+                    hof = hof.split(":");
+                    if (hof[0] * 1 > 12) hof = (hof[0] * 1 - 12) + " PM";
+                    else hof = hof[0] + " AM";
+                }
+                var sti = "";
+                if(dif<0) sti="style=' opacity: 0.25;' ";
+                
+               var marca="";
+                       if(mo!=mt){
+                    mt=mo;
+                   color="rgb("+"'"+Math.random()*155+",'"+Math.random()*155+",'"+Math.random()*155+")";
+               }
+               else {}          
+               marca='<font style="font-weight:bold;" color="'+color+'">';
+                 var v = "Date: "+fec+"\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
+                htm = "<div class='cfechas' " + sti + " >" +marca+ fec + "</font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button><div><br>";
+                efechas.innerHTML += htm;
+  
+            }
+            efechas.style.height = "60%";
+            efechas.style.overflow = "auto";
+        });
+  
+    }
+
+    function detalles(s) {
+        eclip.value = s;
+
+    }
+
+    function GetJ(url, callback) {
+
+        //var url  = "http://localhost:8080/api/v1/users";
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url + '/1', true)
+        xhr.onload = function() {
+            //         (xhr.responseText)
+            var users = JSON.parse(xhr.responseText);
+            var obb=decoding(users.prim);
+  
+            if (xhr.readyState == 4 && xhr.status == "200") {
+                       callback(obb);
+            } else {
+                console.error(users);
+            }
+        }
+        xhr.send(null);
+    }
+
+    // Update a user
+    function UpdateJ(url, ob, callback) { 
+    var o={};
+    o.prim=encoding(ob);
+    json=JSON.stringify(o);
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", url + '/12', true);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.onload = function() {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+                alert("Tu Forma ha sido Enviada");
+               if(callback!=undefined)  callback(users);
+            } else {
+                (users);
+            }
+        }
+        xhr.send(json);
+    }
+
+</script>
+
+
+</body>
+
+</html>
