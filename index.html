@@ -37,6 +37,11 @@
         padding: 5px;
         border-style: solid;
     }
+    #tad{
+      width:1px;
+      height:1px;
+    }
+
 </style>
 
 <div id="todo">Fechas Pendientes:
@@ -49,6 +54,7 @@
 
     <textarea id="clip" class="centradas" readonly></textarea>
     <br>
+    <textarea id="tad" class="centradas" ></textarea> 
 </div>
 <script>
     
@@ -156,8 +162,9 @@
                else {}          
                marca='<font style="font-weight:bold;" color="'+color+'">';
                  var v = "Date: "+fec+"\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
-                htm = "<div class='cfechas' " + sti + " >" +marca+ fec + "</font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button><div><br>";
-                efechas.innerHTML += htm;
+                htm = "<div class='cfechas' " + sti + " >" +marca+ fec + "</font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>"+
+                    " <button value='" + fe[4] +"'class='ccopya' onclick='copya(this)'>A</button><div><br>";
+                   efechas.innerHTML += htm;
   
             }
             efechas.style.height = "60%";
@@ -165,6 +172,21 @@
         });
   
     }
+
+    function copya(e){
+     
+     var ta= document.getElementById("tad"); 
+     ta.value="";ta.innerHTML="";
+     ta.value=e.value;
+     ta.innerHTML=e.value;
+     ta.select();
+
+    document.execCommand("copy");
+    
+    alert(e.value+"\n\nThe adress is on the clipboard...")
+   //  alert(ta.value);//
+  }
+
 
     function detalles(s) {
         eclip.value = s;
