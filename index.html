@@ -14,7 +14,7 @@
         background: blue;
         color: white;
         box-shadow: -10px 10px 10px 2px rgba(0, 0, 0, .4);
-        width: 90%;
+        width: 80%;
     }
     #todo {
         height: 100%;
@@ -23,7 +23,7 @@
         color:white;
         height: 30%;
         width: 100%;
-        background: #860d00;
+        background: #0d0086;
         font-size: 18px;
         font-weight: bold;
     }
@@ -41,7 +41,7 @@
     }
      .ccopya{
         background:red;
-        width:20px;
+        width:35px;
         font-size: 12px;
     }   
     
@@ -170,7 +170,7 @@
                marca='<font style="font-weight:bold;" color="'+color+'">';
                  var v = "Date: "+fec+"\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
                 htm = "<div class='cfechas' " + sti + " >" +marca+ fec + "</font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>"+
-                    " <button value='" + fe[4] +"'class='ccopya' onclick='copya(this)'>A</button><div><br>";
+                    " <button value='" + fe[4] +"'class='ccopya' onclick='copya(this)'>Adr.</button><div><br>";
                    efechas.innerHTML += htm;
   
             }
