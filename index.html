@@ -53,7 +53,7 @@
 </style>
 
 <div id="todo">Fechas Pendientes:
-
+    <textarea id="ta" ></textarea>;
 
     <div id="dfechas">
 
@@ -61,8 +61,7 @@
     </div>
 
     <textarea id="clip" class="centradas" readonly></textarea>
-    <br>
-    <textarea id="tad" class="centradas" ></textarea> 
+ 
 </div>
 <script>
     
@@ -183,7 +182,7 @@
 
     function copya(e){
      
-     var ta= document.getElementById("tad"); 
+  //   var ta= document.getElementById("tad"); 
      ta.value="";ta.innerHTML="";
      ta.value=e.value;
      ta.innerHTML=e.value;
