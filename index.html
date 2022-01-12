@@ -20,7 +20,7 @@
         height: 100%;
     }
     #clip {
-        color:white;
+        color: white;
         height: 30%;
         width: 100%;
         background: #0d6600;
@@ -39,21 +39,19 @@
         padding: 5px;
         border-style: solid;
     }
-     .ccopya{
-        background:red;
-        width:35px;
+    .ccopya {
+        background: red;
+        width: 35px;
         font-size: 12px;
-    }   
-    
-    #tad{
-      width:1px;
-      height:1px;
     }
-
+    #tad {
+        width: 1px;
+        height: 1px;
+    }
 </style>
 
 <div id="todo">Fechas Pendientes:
-    <textarea id="ta" ></textarea>;
+    <textarea id="ta"></textarea>;
 
     <div id="dfechas">
 
@@ -61,13 +59,13 @@
     </div>
 
     <textarea id="clip" class="centradas" readonly></textarea>
- 
+
 </div>
 <script>
-    
-    color="rgb("+"'"+Math.random()*155+",'"+Math.random()*155+",'"+Math.random()*155+")"
-  var keyc="";
-   
+   var user="andres"
+    color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")"
+    var keyc = "";
+
     //Called after application is started.
     eclip = document.getElementById("clip");
     efechas = document.getElementById("dfechas");
@@ -75,129 +73,275 @@
     var m = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
     var dias = "Sunday,Monday,Tuesday,Wednesday,Thursday,Fryday,Saturday";
     dias = dias.split(",");
-   m = m.split(",");
+    m = m.split(",");
     var sob;
-//localStorage.removeItem("key");
-  keyc=localStorage.getItem("key");
-//alert(keyc);
-  if(keyc!=null && keyc!="" && keyc.indexOf("ceb4")>-1){
-     eval(keyc+";inic()");
-      }
-      else{
-      var cc=prompt("PASTE KEY");
-      u=prompt("type your password");
-      cc="u='"+u+"';"+cc;
-     
-        localStorage.setItem("key",cc);
-      eval(cc+";inic()");
+    localStorage.removeItem("key");
+    cl = localStorage.getItem("pass");
+    np=localStorage.getItem("pin");
+    user=localStorage.getItem("user")
+    if(np!=null && np!="" && cl!=null && cl!="" && user!=null && user!="") prep();
+    
+    else{
+      user=prompt("Type User name")
+      np=prompt("Type Pin");
+      cl=prompt("Type Password");
+      if(np.length>1 && cl.length>1 && user.length>1){
+ 
+   localStorage.setItem("pin",np)
+   localStorage.setItem("pass",cl);
+    localStorage.setItem("user",cl);
+    prep();
+    }
+    
+     else {
+alert("Try Again");
+window.location.reload();
+     }
+    }
+     var arf = [];
 
-  } 
-  var ret=false;
-  function inic(){
-  if (u.length >=4 && ac.indexOf(u)>-1){
-     var p1=keyc.split("link")[1];
-     keyc="u='"+u+"';link"+p1;
-            localStorage.setItem("key",keyc); 
-     eval(keyc);
-  //   alert(keyc);
-      start();
-      
-      }
-    else {
-        u=prompt("Wrong Password, try again");
-        inic()
-       };//
-  }
+    var mt = "";
 
-    var arf = [],
-        orden = "";
-    key = 9
- var mt="";
-
-    function start() {
-        var i = 0;
-        GetJ(link, function(obj) {
-            f = obj.fechas;
-            var ob = {};
-            for (var i = 0; i < f.length; i++) {
-                var fe = f[i];
-                var or = fe.fecha + "_" + fe.inicia + "_" + fe.termina + "_" + fe.horas + "_" + fe.direccion + "_" + fe.nota;
-                arf.push(or);
-            }
-            // 
-            arf.sort();
-            for (i = 0; i < arf.length; i++) {
-                var fe = arf[i];
-                fe = fe.split("_");
-                var fec = fe[0];
-                var hoi = fe[1];
-                var hof = fe[2];
-
-                af = fec.split("-");
-                var mo = m[af[1] * 1 - 1],
-                    y = af[0],
-                    d = af[2];
-
-                var de = new Date();
-                de.setFullYear(af[0] * 1); //alert(af[0]*1)
-                de.setMonth(af[1] * 1 - 1)
-
-                de.setDate(d * 1)
-              var dif=de.getTime()-new Date().getTime();
-                fec = mo + " " + d + "  " + y + "(" + dias[de.getDay()] + ") ";
-                if (hoi.indexOf(":") >= 0) {
-                    hoi = hoi.split(":");
-                    if (hoi[0] * 1 > 12) hoi = (hoi[0] * 1 - 12) + " PM";
-                    else hoi = hoi[0] + " AM";
-                } else {
-
-                }
-
-                if (hof.indexOf(":") >= 0) {
-                    hof = hof.split(":");
-                    if (hof[0] * 1 > 12) hof = (hof[0] * 1 - 12) + " PM";
-                    else hof = hof[0] + " AM";
-                }
-                var sti = "";
-                if(dif<0) sti="style=' opacity: 0.25;' ";
-                
-               var marca="";
-                       if(mo!=mt){
-                    mt=mo;
-                   color="rgb("+"'"+Math.random()*155+",'"+Math.random()*155+",'"+Math.random()*155+")";
-               }
-               else {}          
-               marca='<font style="font-weight:bold;" color="'+color+'">';
-                 var v = "Date: "+fec+"\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
-                htm = "<div class='cfechas' " + sti + " >" +marca+ fec + "</font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>"+
-                    " <button value='" + fe[4] +"'class='ccopya' onclick='copya(this)'>Adr.</button><div><br>";
-                   efechas.innerHTML += htm;
-  
-            }
-            efechas.style.height = "60%";
-            efechas.style.overflow = "auto";
-        });
-  
+    var dias = "Sunday,Monday,Tuesday,Wednesday,Thursday,Fryday,Saturday";
+    dias = dias.split(",");
+    var m = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+    m = m.split(",");
+    at = [];
+   // cl = "Comando0118Unicohaynomas";
+  //  np = 18;
+    objFe = {
+        "name": "fe3",
+        "fechas": []
+    };
+    objFo = {
+        "name": "fo3",
+        "fms": []
     }
 
-    function copya(e){
-     
-  //   var ta= document.getElementById("tad"); 
-     ta.value="";ta.innerHTML="";
-     ta.value=e.value;
-     ta.innerHTML=e.value;
-     ta.select();
 
-    document.execCommand("copy");
-    
-    alert(e.value+"\n\nAdress Copied to Clipboard...\n\nReady to Paste it to Maps")
- 
-  }
+    function set1(a, of) {
+        var s = "";
+        for (var i = 0; i < a.length; i++) {
+            s += String.fromCharCode(a.charCodeAt(i) - of)
+        }
+        return s
+
+    }
+
+    code = null;
+    decode = null;
+function prep(){
+    loadDoc("https://raw.githubusercontent.com/ljaureguil/Comando-Unico-Forma/main/con2.txt", function(r) {
+        regreso(r, np, function(res) {
+            eval(res);
+            //
+            p22()
+
+        })
+    });
+
+    function p22() {
+        GetJ(linkk, function(ob) { //paso1 link de inicio
+            var v = set1(ob.cont, np);
+            eval(v)
+            code = cod;
+            decode = decod;
+
+            if (linkl) {
+                GetJ(linkl, function(ol) {
+                    decode(cl, ol.cont, function(res) {
+                        eval(res);
+                        //    clip.value=res;
+                        setUpObj(function() {
+                            iniciar();
+                        })
+                    })
+                })
+
+            }
+            else {
+                alert("Try Ahgain, wrong pin...");
+                window.location.reload();
+            }
+        })
+
+    }
+}
+    function iniciar() {
+        var i = 0;
+        //    GetJ(link, function(obj) {
+        var obj = objFe;
+        f = obj.fechas;
+        var ob = {};
+        for (var i = 0; i < f.length; i++) {
+            var fe = f[i];
+
+            var or = fe.fecha + "_" + fe.inicia + "_" + fe.termina + "_" + fe.horas + "_" + fe.direccion + "_" + fe.nota + "_"+fe.deposito;
+            arf.push(or);
+        }
+        // 
+        arf.sort();
+        for (i = 0; i < arf.length; i++) {
+            var fe = arf[i];
+            fe = fe.split("_");
+            var fec = fe[0];
+            var hoi = fe[1];
+            var hof = fe[2];
+
+            af = fec.split("-");
+            var mo = m[af[1] * 1 - 1],
+                y = af[0],
+                d = af[2];
+
+            var de = new Date();
+            de.setFullYear(af[0] * 1); //alert(af[0]*1)
+            de.setMonth(af[1] * 1 - 1)
+
+            de.setDate(d * 1)
+            var dif = de.getTime() - new Date().getTime();
+            fec = mo + " " + d + "  " + y + "(" + dias[de.getDay()] + ") ";
+            if (hoi.indexOf(":") >= 0) {
+                hoi = hoi.split(":");
+                if (hoi[0] * 1 > 12) hoi = (hoi[0] * 1 - 12) + " PM";
+                else hoi = hoi[0] + " AM";
+            } else {
+
+            }
+
+            if (hof.indexOf(":") >= 0) {
+                hof = hof.split(":");
+                if (hof[0] * 1 > 12) hof = (hof[0] * 1 - 12) + " PM";
+                else hof = hof[0] + " AM";
+            }
+            var sti = "";
+            var bkg="background:white", pp=""
+            if (dif < 0) sti = "style=' opacity: 0.25;' ";
+
+            var marca = "";
+            if (mo != mt) { 
+                mt = mo;
+                color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")";
+            } else {
+              
+                if(fe[6]*1<=0 || fe[6]===NaN){
+                    bkg="background:#3a3";
+                    pp="THIS DATE IS STILL PENDING..."
+                 }
+
+            }
+            marca = '<font style="font-weight:bold;" color="' + color + '">';
+            var v = "Date: " + fec + "\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
+            htm = "<div class='cfechas' " + sti + "  style='"+bkg+"' >"+pp + marca + fec + " </font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>" +
+                " <button value='" + fe[4] + "'class='ccopya' onclick='copya(this)'>Adr.</button><div><br>";
+            efechas.innerHTML += htm;
+            if(user.toUpperCase()==="DANY" || user.toUpperCase()==="ANDRES"){
+         //    ta.value+="\n\n extra info..."
+            }
+
+        }
+        efechas.style.height = "60%";
+        efechas.style.overflow = "auto";
+        //  });
+
+    }
+
+    function copya(e) {
+        ta.value = "";
+        ta.innerHTML = "";
+        ta.value = e.value;
+        ta.innerHTML = e.value;
+        ta.select();
+
+        document.execCommand("copy");
+
+        alert(e.value + "\n\nAdress Copied to Clipboard...\n\nReady to Paste it to Maps")
 
 
-    function detalles(s) {
-        eclip.value = s;
 
+    }
+
+    function setUpObj(callback) {
+        delete objFo.fms;
+        delete objFe.fechas;
+        objFo.fms = [];
+        objFe.fechas = [];
+        if (linkfe) {
+            GetJ(linkfe, function(ofe) {
+                var de = []
+                for (var i = 0; i < ofe.afc.length; i++) {
+                    var f = ofe.afc[i];
+                    decode(cl, f, function(res) {
+                        var y = res.split("__")[1]
+                        de.push(y + "^^^" + res)
+                    });
+                }
+                de.sort();
+                for (var i = 0; i < de.length; i++) {
+                    var s = de[i].split("^^^")[1].split("__");
+                    var oe = {
+                        "created": s[0],
+                        "fecha": s[1],
+                        "nombre": s[2],
+                        "telefono": s[3],
+                        "direccion": s[4],
+                        "clave": s[5],
+                        "precio": s[6] * 1,
+                        "horas": s[7] * 1,
+                        "deposito": s[8] * 1,
+                        "inicia": s[9],
+                        "termina": s[10],
+                        "nota": s[11],
+                        "status": s[12]
+                    }
+                    objFe.fechas.push(oe);
+                }
+                if (linkfo) {
+                    GetJ(linkfo, function(ofo) {
+                                        var afo = ofo.fms;
+                        for (var ii = 0; ii < afo.length; ii++) {
+                            var oa = regreso(afo[ii], np, function(res) {
+                                var c = JSON.parse(res)
+                                objFo.fms.push(c);
+                            });
+                        }
+                        if (callback != undefined) callback();
+                    })
+                }
+            })
+        }
+        else {
+                alert("Try Ahgain, wrong pass...");
+                window.location.reload();
+            }
+    }
+
+
+
+    function loadDoc(url, callback) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", url, false);
+        xhttp.send();
+        if (callback != undefined) callback(xhttp.responseText);
+
+    }
+
+    function convert(txt, p, callback) {
+        var w = "";
+        for (var i = 0; i < txt.length; i++) {
+            w += txt[i].charCodeAt(0).toString(p) + ".";
+        }
+        if (callback != undefined) callback(w.slice(0, -1))
+        return w.slice(0, -1);
+    }
+
+    function regreso(str, p, callback) {
+        var ae = str.split(".").map(function(elem) {
+            return String.fromCharCode(parseInt(elem, p));
+        }).join("");
+
+        if (callback != undefined) callback(ae.trim());
+        return ae
     }
 
     function GetJ(url, callback) {
@@ -208,10 +352,9 @@
         xhr.onload = function() {
             //         (xhr.responseText)
             var users = JSON.parse(xhr.responseText);
-            var obb=decoding(users.prim);
-  
             if (xhr.readyState == 4 && xhr.status == "200") {
-                       callback(obb);
+                //    console.table(users);
+                callback(users);
             } else {
                 console.error(users);
             }
@@ -219,19 +362,16 @@
         xhr.send(null);
     }
 
-    // Update a user
-    function UpdateJ(url, ob, callback) { 
-    var o={};
-    o.prim=encoding(ob);
-    json=JSON.stringify(o);
+    function UpdateJ(url, ob, callback) { //prompt(JSON.stringify(ob))
+        var json = JSON.stringify(ob); //JSON.stringify(data);
         var xhr = new XMLHttpRequest();
         xhr.open("PUT", url + '/12', true);
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.onload = function() {
             var users = JSON.parse(xhr.responseText);
             if (xhr.readyState == 4 && xhr.status == "200") {
-                alert("Tu Forma ha sido Enviada");
-               if(callback!=undefined)  callback(users);
+                alert("Forma a sido enviada");
+                if (callback != undefined) callback(users);
             } else {
                 (users);
             }
@@ -239,6 +379,10 @@
         xhr.send(json);
     }
 
+    function detalles(s) {
+        eclip.value = s;
+
+    }
 </script>
 
 
