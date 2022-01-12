@@ -48,10 +48,17 @@
         width: 1px;
         height: 1px;
     }
+    #bre{
+        position: absolute;
+        top:0%;
+        right: 1%;
+        width: 1%;
+    }
 </style>
 
 <div id="todo">Fechas Pendientes:
-    <textarea id="ta"></textarea>;
+    <textarea id="ta"></textarea>
+     <button id="bre" onclick="resetear()">Reset</button>
 
     <div id="dfechas">
 
@@ -118,6 +125,14 @@ window.location.reload();
         "fms": []
     }
 
+    function resetear(){
+        if(confirm("Are you sere to reset App?")){
+        localStorage.removeItem("pin")
+   localStorage.removeItem("pass");
+    localStorage.removeItem("user");
+    window.location.reload();
+    }
+}
 
     function set1(a, of) {
         var s = "";
@@ -146,7 +161,7 @@ function prep(){
             eval(v)
             code = cod;
             decode = decod;
-
+  
             if (linkl) {
                 GetJ(linkl, function(ol) {
                     decode(cl, ol.cont, function(res) {
@@ -383,6 +398,8 @@ function prep(){
         eclip.value = s;
 
     }
+
+
 </script>
 
 
