@@ -190,9 +190,9 @@ function prep(){
         f = obj.fechas;
         var ob = {};
         for (var i = 0; i < f.length; i++) {
-            var fe = f[i];
+            var fec = f[i];
 
-            var or = fe.fecha + "_" + fe.inicia + "_" + fe.termina + "_" + fe.horas + "_" + fe.direccion + "_" + fe.nota + "_"+fe.deposito;
+            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + fec.n + "_"+fec.de;
             arf.push(or);
         }
         // 
@@ -238,7 +238,7 @@ function prep(){
                 mt = mo;
                 color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")";
             } else {
-              
+           
                 if(fe[6]*1<=0 || fe[6]===NaN){
                     bkg="background:#3a3";
                     pp="THIS DATE IS STILL PENDING..."
@@ -277,54 +277,72 @@ function prep(){
     }
 
     function setUpObj(callback) {
+        alert(linkfe);
+     //   linkfe="https://jsonblob.com/api/931281048311185408"
         delete objFo.fms;
         delete objFe.fechas;
         objFo.fms = [];
         objFe.fechas = [];
         if (linkfe) {
-            GetJ(linkfe, function(ofe) {
-                var de = []
-                for (var i = 0; i < ofe.afc.length; i++) {
-                    var f = ofe.afc[i];
-                    decode(cl, f, function(res) {
-                        var y = res.split("__")[1]
-                        de.push(y + "^^^" + res)
-                    });
-                }
-                de.sort();
-                for (var i = 0; i < de.length; i++) {
-                    var s = de[i].split("^^^")[1].split("__");
-                    var oe = {
-                        "created": s[0],
-                        "fecha": s[1],
-                        "nombre": s[2],
-                        "telefono": s[3],
-                        "direccion": s[4],
-                        "clave": s[5],
-                        "precio": s[6] * 1,
-                        "horas": s[7] * 1,
-                        "deposito": s[8] * 1,
-                        "inicia": s[9],
-                        "termina": s[10],
-                        "nota": s[11],
-                        "status": s[12]
-                    }
-                    objFe.fechas.push(oe);
-                }
-                if (linkfo) {
-                    GetJ(linkfo, function(ofo) {
-                                        var afo = ofo.fms;
-                        for (var ii = 0; ii < afo.length; ii++) {
-                            var oa = regreso(afo[ii], np, function(res) {
-                                var c = JSON.parse(res)
-                                objFo.fms.push(c);
-                            });
-                        }
-                        if (callback != undefined) callback();
-                    })
-                }
-            })
-        }
+          
+          GetJ(linkfe, function(ofe) {
+           //   OFE=ofe;
+           var de = [];
+          
+              for (var i = 0; i < ofe.afs.length; i++) {
+
+                      var f = ofe.afs[i];
+                  decode(cl, f, function(res) {
+                  
+                  var o=JSON.parse(res);
+                 
+                      de.push(o)
+         //    var op=document.createElement("option");
+           //      op.value=res;
+            //     op.name=res;
+            //     op.innerHTML=getFecha(o.fe)
+                 // sagendadas.innerHTML+=' <option name='+oe+' value='++'>'+getFecha(s[1])+'</option>'
+              //    sagendadas.appendChild(op)
+             //     alert(res)
+
+                      
+                  });
+                  }
+              de.sort();
+          //    alert(de)
+              objFe.fechas=de;
+              if(callback!=undefined) callback();
+//clip.value=JSON.stringify(objF)
+  
+   /*   if(linkfo){
+          GetJ(linkfo,function(ofo){
+              OFO=ofo;
+          //    alert(ofo.fms.length);
+              var afo=ofo.fms;
+              for(var ii=0;ii<afo.length;ii++){
+                  var oa=regreso(afo[ii],np,function(res){
+                      var c=JSON.parse(res)
+                      objFo.fms.push(c);
+                      var op=document.createElement("option");
+                 op.value=res;
+                 op.name=res;
+                 op.innerHTML=getFecha(c.f)
+                 if(c.st==="returned") sentregadas.appendChild(op);
+                 if(c.st==="sent") spending.appendChild(op);
+                  });
+
+              }
+        //      UpdateJ("https://jsonblob.com/api/931281048311185408",objF,function(){alert("go and check")})
+              if(callback!=undefined) callback();
+          })
+       }*/
+  /*     if(linkb){
+          GetJ(linkb,function(obb){
+              OBB=obb
+           //   alert(oba.fms.length);
+          })
+       }*/
+      })  }
         else {
                 alert("Try Ahgain, wrong pass...");
                 window.location.reload();
