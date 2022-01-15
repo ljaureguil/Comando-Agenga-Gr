@@ -191,8 +191,10 @@ function prep(){
         var ob = {};
         for (var i = 0; i < f.length; i++) {
             var fec = f[i];
+            var ng="";
+            if(fec.ng!=undefined) ng=fec.ng;
 
-            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + fec.n + "_"+fec.de;
+            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + ng + "_"+fec.de;
             arf.push(or);
         }
         // 
@@ -247,7 +249,8 @@ function prep(){
             }
             marca = '<font style="font-weight:bold;" color="' + color + '">';
             var v = "Date: " + fec + "\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
-            htm = "<div class='cfechas' " + sti + "  style='"+bkg+"' >"+pp + marca + fec + " </font>.... " + fe[3] + " Hours<br><br> <button value='" + v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>" +
+            htm = "<div class='cfechas' " + sti + "  style='"+bkg+"' >"+pp + marca + fec + " </font>.... " + fe[3] + " Hours<br><br> <button value='" + 
+                v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>" +
                 " <button value='" + fe[4] + "'class='ccopya' onclick='copya(this)'>Adr.</button><div><br>";
             efechas.innerHTML += htm;
             if(user.toUpperCase()==="DANY" || user.toUpperCase()==="ANDRES"){
