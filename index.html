@@ -194,7 +194,7 @@ function prep(){
             var ng="";
             if(fec.ng!=undefined) ng=fec.ng;
 
-            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + ng + "_"+fec.de;
+            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + ng + "_"+fec.st;
             arf.push(or);
         }
         // 
@@ -241,10 +241,27 @@ function prep(){
                 color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")";
             } else {
            
-                if(fe[6]*1<=0 || fe[6]===NaN){
-                    bkg="background:#3a3";
-                    pp="THIS DATE IS STILL PENDING..."
+              //  if(fe[6]*1<=0 || fe[6]===NaN){
+                if(fe[6]==="presentacion booked"){
+                    bkg="background:#fa3";
+                    pp="PRESENTACION CONFIRMADA...<br>";
                  }
+                 if(fe[6]==="presentacion pending"){
+                    bkg="background:#af3";
+                    pp="PRESENTACION PENDING...<br>";
+                 }
+                 if(fe[6]==="pending"){
+                    bkg="background:#a7f";
+                    pp="Still Pending...<br>";
+                 }
+                  if(fe[6]==="returned"){
+                    bkg="background:#59f";
+                    pp="Still Pending, Was Returned *chk...<br>";
+                 }                
+                 if(fe[6]==="sent"){
+                    bkg="background:#f9f";
+                    pp="Was sent... *chk...<br>";
+                 }                                             
 
             }
             marca = '<font style="font-weight:bold;" color="' + color + '">';
