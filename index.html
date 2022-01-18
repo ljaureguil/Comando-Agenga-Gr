@@ -35,9 +35,11 @@
         border-style: solid;
     }
     .cfechas {
+        font-weight: bold;
         margin: 15px;
         padding: 5px;
         border-style: solid;
+        text-shadow: 0px 1px 2px blue;
     }
     .ccopya {
         background: red;
@@ -125,7 +127,9 @@ window.location.reload();
         "name": "fo3",
         "fms": []
     }
-
+ //   var lpe="https://media.istockphoto.com/vectors/red-rubber-stamp-icon-on-transparent-background-vector-id851180540?b=1&k=20&m=851180540&s=170667a&w=0&h=3S6n0uavdo75FPyXgMbs1Jh1E2DJ1rYJdz_NYwUVJzk="
+   var lpe="https://media.istockphoto.com/vectors/pending-red-rubber-stamp-icon-on-transparent-background-vector-id891807116?b=1&k=20&m=891807116&s=170667a&w=0&h=LcdaMBYqtnkOE0AP3SapA97a7A5H1D6vNUca6_7KOKc="
+   
     function resetear(){
         if(confirm("Are you sere to reset App?")){
         localStorage.removeItem("pin")
@@ -251,11 +255,12 @@ function prep(){
                     pp="PRESENTACION PENDING...<br>";
                  }
                  if(fe[6]==="pending"){
-                    bkg="background:#a7f";
+                    bkg="background-color:#a7f;background:url("+lpe+");background-size:100% 100%;";
                     pp="Still Pending...<br>";
                  }
                   if(fe[6]==="returned"){
-                    bkg="background:#59f";
+                  //  bkg="background:#59f";
+                    bkg="background:url("+lpe+");background-size:100% 100%;";
                     pp="Still Pending, Was Returned *chk...<br>";
                  }                
                  if(fe[6]==="sent"){
