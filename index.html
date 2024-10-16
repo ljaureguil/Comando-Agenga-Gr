@@ -1,410 +1,108 @@
-<html>
+< html >
+    <
+    head >
+    <
+    meta name = "viewport"
+content = "width=device-width" >
+    <
+    link rel = "icon"
+href = "https://cdn.pixabay.com/photo/2023/11/01/12/18/mail-8357450_1280.jpg" >
+    <
+    title > GR < /title> <
+    meta charset = "utf-8" >
+    <
+    meta name = "viewport"
+content = "width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" >
+    <
+    /head> <
+    style >
 
-<head>
-    <meta name="viewport" content="width=device-width">
-</head>
-<style>
-    body {
-        background-color: #ffffff;
-        font-size: 18px;
-    }
     button {
-        font-size: 14px;
-        border-radius: 50px;
-        background: blue;
-        color: white;
-        box-shadow: -10px 10px 10px 2px rgba(0, 0, 0, .4);
-        width: 85%;
-    }
-    #todo {
-        height: 100%;
-    }
-    #clip {
-        color: white;
-        height: 30%;
-        width: 100%;
-        background: #0d6600;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    #dfechas {
-        margin: 10px;
-        width: 95%;
-        height: 60%;
-        overflow: hidden;
-        border-style: solid;
-    }
-    .cfechas {
-        font-weight: bold;
-        margin: 15px;
-        padding: 5px;
-        border-style: solid;
-        text-shadow: 0px 1px 2px blue;
-    }
-    .ccopya {
-        background: red;
-        width: 35px;
-        font-size: 12px;
-    }
-    #tad {
-        width: 1px;
-        height: 1px;
-    }
-    #bre{
-        position: absolute;
-        top:1%;
-       lest: 1%;
-        width: 16%;
-        background:red;
-    }
-</style>
+        width: 70 % ;
+        height: 5 % ;
+        margin: 5 px;
+        box - shadow: 10 px 5 px 5 px rgba(200, 200, 200, .76);
+        border - radius: 5 px;
 
-<div id="todo">Fechas Pendientes:
-    <textarea id="ta"></textarea>
-     <button id="bre" onclick="resetear()">Reset</button>
-
-    <div id="dfechas">
-
-
-    </div>
-
-    <textarea id="clip" class="centradas" readonly></textarea>
-
-</div>
-<script>
-   var user="andres"
-    color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")"
-    var keyc = "";
-
-    //Called after application is started.
-    eclip = document.getElementById("clip");
-    efechas = document.getElementById("dfechas");
-
-    var m = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
-    var dias = "Sunday,Monday,Tuesday,Wednesday,Thursday,Fryday,Saturday";
-    dias = dias.split(",");
-    m = m.split(",");
-    var sob;
-    localStorage.removeItem("key");
-    cl = localStorage.getItem("pass");
-    np=localStorage.getItem("pin");
-    user=localStorage.getItem("user")
-    if(np!=null && np!="" && cl!=null && cl!="" && user!=null && user!="") prep();
-    
-    else{
-      user=prompt("Type User name")
-      np=prompt("Type Pin");
-      cl=prompt("Type Password");
-      if(np.length>1 && cl.length>1 && user.length>1){
- 
-   localStorage.setItem("pin",np)
-   localStorage.setItem("pass",cl);
-    localStorage.setItem("user",cl);
-    prep();
     }
-    
-     else {
-alert("Try Again");
-window.location.reload();
-     }
-    }
-     var arf = [];
+#todo {
 
-    var mt = "";
+    width: 100 % ;
 
-    var dias = "Sunday,Monday,Tuesday,Wednesday,Thursday,Fryday,Saturday";
-    dias = dias.split(",");
-    var m = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
-    m = m.split(",");
-    at = [];
-   // cl = "Comando0118Unicohaynomas";
-  //  np = 18;
-    objFe = {
-        "name": "fe3",
-        "fechas": []
-    };
-    objFo = {
-        "name": "fo3",
-        "fms": []
-    }
- //   var lpe="https://media.istockphoto.com/vectors/red-rubber-stamp-icon-on-transparent-background-vector-id851180540?b=1&k=20&m=851180540&s=170667a&w=0&h=3S6n0uavdo75FPyXgMbs1Jh1E2DJ1rYJdz_NYwUVJzk="
-   var lpe="https://media.istockphoto.com/vectors/pending-red-rubber-stamp-icon-on-transparent-background-vector-id891807116?b=1&k=20&m=891807116&s=170667a&w=0&h=LcdaMBYqtnkOE0AP3SapA97a7A5H1D6vNUca6_7KOKc="
-   
-    function resetear(){
-        if(confirm("Are you sere to reset App?")){
-        localStorage.removeItem("pin")
-   localStorage.removeItem("pass");
-    localStorage.removeItem("user");
-    window.location.reload();
-    }
+    margin: 5 px;
+
+}
+textarea {
+    margin: 5 px;
+    width: 95 % ;
+    height: 30 % ;
+    padding: 5 px;
+    background: #aaffaa;
+}
+.ce {
+    width: 60 % ;
+    height: 15 % ;
+
+    color: black;
+    background: white;
+    padding: 5 px;
+    margin: 15 px;
+    border - radius: 5 px;
+    box - shadow: -18 px 14 px 14 px 1 px rgba(0, 0, 0, 0.14);
+}
+#es {
+    width: 100 % ;
+    background: white;
+    text - align: center;
+
 }
 
-    function set1(a, of) {
-        var s = "";
-        for (var i = 0; i < a.length; i++) {
-            s += String.fromCharCode(a.charCodeAt(i) - of)
-        }
-        return s
+<
+/style> <
+div id = "todo" >
 
-    }
-
-    code = null;
-    decode = null;
-function prep(){
-    loadDoc("https://raw.githubusercontent.com/ljaureguil/Comando-Unico-Forma/main/con2.txt", function(r) {
-        regreso(r, np, function(res) {
-            eval(res);
-            //
-            p22()
-
-        })
-    });
-
-    function p22() {
-        GetJ(linkk, function(ob) { //paso1 link de inicio
-            var v = set1(ob.cont, np);
-            eval(v)
-            code = cod;
-            decode = decod;
-  
-            if (linkl) {
-                GetJ(linkl, function(ol) {
-                    decode(cl, ol.cont, function(res) {
-                        eval(res);
-                        //    clip.value=res;
-                        setUpObj(function() {
-                            iniciar();
-                        })
-                    })
-                })
-
-            }
-            else {
-                alert("Try Ahgain, wrong pin...");
-                window.location.reload();
-            }
-        })
-
-    }
+    <
+    /div> <
+    div id = "es" > < /div> <
+    script >
+    var sc = "";
+sc = localStorage.getItem("c");
+if (sc === null) {
+    var sc = prompt("Paste text");
+    if (sc.indexOf("+){") === -1) alert("Wrong text, try again")
 }
-    function iniciar() {
-        var i = 0;
-        //    GetJ(link, function(obj) {
-        var obj = objFe;
-        f = obj.fechas;
-        var ob = {};
-        for (var i = 0; i < f.length; i++) {
-            var fec = f[i];
-            var ng="";
-            if(fec.ng!=undefined) ng=fec.ng;
+alert(sc)
+//   else sc=c;
+var n = prompt("?");
+//sc=`link="https://jsonblob.com/api/1287813620531322880";function tradC(s){var ss="";for(var i=0;i<s.length;i++){ss+=String.fromCharCode(s.charCodeAt(i)-n)};return ss}`
+var st = "";
+var ob = {};
+ob.cont = "";
+eval(sc);
 
-            var or = fec.fe + "_" + fec.i + "_" + fec.t + "_" + fec.ho + "_" + fec.di + "_" + ng + "_"+fec.st;
-            arf.push(or);
-        }
-        // 
-        arf.sort();
-        for (i = 0; i < arf.length; i++) {
-            var fe = arf[i];
-            fe = fe.split("_");
-            var fec = fe[0];
-            var hoi = fe[1];
-            var hof = fe[2];
+getC = function(callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", link, false);
+    xhttp.send();
+    if (callback != undefined) callback(JSON.parse(xhttp.responseText).cont);
+    else st = JSON.parse(xhttp.responseText).cont;
+}
 
-            af = fec.split("-");
-            var mo = m[af[1] * 1 - 1],
-                y = af[0],
-                d = af[2];
+if (n != null) getC(function(r) {
+    st = tradC(r)
+});
+var a = st.split("****************");
+for (var i = 0; i < a.length; i++) {
+    var aa = a[i];
 
-            var de = new Date();
-            de.setFullYear(af[0] * 1); //alert(af[0]*1)
-            de.setMonth(af[1] * 1 - 1)
+    var p = document.createElement("textarea");
+    p.setAttribute("class", "ce");
 
-            de.setDate(d * 1)
-            var dif = de.getTime() - new Date().getTime();
-            fec = mo + " " + d + "  " + y + "(" + dias[de.getDay()] + ") ";
-            if (hoi.indexOf(":") >= 0) {
-                hoi = hoi.split(":");
-                if (hoi[0] * 1 > 12) hoi = (hoi[0] * 1 - 12) + " PM";
-                else hoi = hoi[0] + " AM";
-            } else {
+    p.value = aa;
+    //    p.setAttribute("click",function(){alert("this.tx")})
+    es.appendChild(p);
+}
 
-            }
-
-            if (hof.indexOf(":") >= 0) {
-                hof = hof.split(":");
-                if (hof[0] * 1 > 12) hof = (hof[0] * 1 - 12) + " PM";
-                else hof = hof[0] + " AM";
-            }
-            var sti = "";
-            var bkg="background:white", pp=""
-            if (dif < 0) sti = "style=' opacity: 0.25;' ";
-
-            var marca = "";
-            if (mo != mt) { 
-                mt = mo;
-                color = "rgb(" + "'" + Math.random() * 155 + ",'" + Math.random() * 155 + ",'" + Math.random() * 155 + ")";
-            } else {
-           
-              //  if(fe[6]*1<=0 || fe[6]===NaN){
-                if(fe[6]==="presentacion booked"){
-                    bkg="background:#fa3";
-                    pp="PRESENTACION CONFIRMADA...<br>";
-                 }
-                 if(fe[6]==="presentacion pending"){
-                    bkg="background:#af3";
-                    pp="PRESENTACION PENDING...<br>";
-                 }
-                 if(fe[6]==="pending"){
-                    bkg="background-color:#a7f;background:url("+lpe+");background-size:100% 100%;";
-                    pp="Still Pending...<br>";
-                 }
-                  if(fe[6]==="returned"){
-                  //  bkg="background:#59f";
-                    bkg="background:url("+lpe+");background-size:100% 100%;";
-                    pp="Still Pending, Was Returned *chk...<br>";
-                 }                
-                 if(fe[6]==="sent"){
-                    bkg="background:#f9f";
-                    pp="Was sent... *chk...<br>";
-                 }                                             
-
-            }
-            marca = '<font style="font-weight:bold;" color="' + color + '">';
-            var v = "Date: " + fec + "\n\nAdress: " + fe[4] + "\nHours: " + fe[3] + "\nStart: " + hoi + "\nEnd: " + hof + "\n\nNote: " + fe[5];
-            htm = "<div class='cfechas' " + sti + "  style='"+bkg+"' >"+pp + marca + fec + " </font>.... " + fe[3] + " Hours<br><br> <button value='" + 
-                v + "'class='cfbtns' onclick='detalles(this.value)'>Details</button>" +
-                " <button value='" + fe[4] + "'class='ccopya' onclick='copya(this)'>Adr.</button><div><br>";
-            efechas.innerHTML += htm;
-            if(user.toUpperCase()==="DANY" || user.toUpperCase()==="ANDRES"){
-         //    ta.value+="\n\n extra info..."
-            }
-
-        }
-        efechas.style.height = "60%";
-        efechas.style.overflow = "auto";
-        //  });
-
-    }
-
-    function copya(e) {
-        ta.value = "";
-        ta.innerHTML = "";
-        ta.value = e.value;
-        ta.innerHTML = e.value;
-        ta.select();
-
-        document.execCommand("copy");
-
-        alert(e.value + "\n\nAdress Copied to Clipboard...\n\nReady to Paste it to Maps")
-
-
-
-    }
-
-    function setUpObj(callback) {
-      
-        delete objFo.fms;
-        delete objFe.fechas;
-        objFo.fms = [];
-        objFe.fechas = [];
-        if (linkfe) {
-          
-          GetJ(linkfe, function(ofe) {
-           //   OFE=ofe;
-           var de = [];
-          
-              for (var i = 0; i < ofe.afs.length; i++) {
-
-                      var f = ofe.afs[i];
-                  decode(cl, f, function(res) {
-                  
-                  var o=JSON.parse(res);
-                 
-                      de.push(o)
-                         });
-                  }
-              de.sort();
-          //    alert(de)
-              objFe.fechas=de;
-              if(callback!=undefined) callback();
-      })  }
-        else {
-                alert("Try Ahgain, wrong pass...");
-                window.location.reload();
-            }
-    }
-
-    function loadDoc(url, callback) {
-        var xhttp = new XMLHttpRequest();
-
-        xhttp.open("GET", url, false);
-        xhttp.send();
-        if (callback != undefined) callback(xhttp.responseText);
-
-    }
-
-    function convert(txt, p, callback) {
-        var w = "";
-        for (var i = 0; i < txt.length; i++) {
-            w += txt[i].charCodeAt(0).toString(p) + ".";
-        }
-        if (callback != undefined) callback(w.slice(0, -1))
-        return w.slice(0, -1);
-    }
-
-    function regreso(str, p, callback) {
-        var ae = str.split(".").map(function(elem) {
-            return String.fromCharCode(parseInt(elem, p));
-        }).join("");
-
-        if (callback != undefined) callback(ae.trim());
-        return ae
-    }
-
-    function GetJ(url, callback) {
-
-        //var url  = "http://localhost:8080/api/v1/users";
-        var xhr = new XMLHttpRequest()
-        xhr.open('GET', url + '/1', true)
-        xhr.onload = function() {
-            //         (xhr.responseText)
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-                //    console.table(users);
-                callback(users);
-            } else {
-                console.error(users);
-            }
-        }
-        xhr.send(null);
-    }
-
-    function UpdateJ(url, ob, callback) { //prompt(JSON.stringify(ob))
-        var json = JSON.stringify(ob); //JSON.stringify(data);
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", url + '/12', true);
-        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        xhr.onload = function() {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-                alert("Forma a sido enviada");
-                if (callback != undefined) callback(users);
-            } else {
-                (users);
-            }
-        }
-        xhr.send(json);
-    }
-
-    function detalles(s) {
-        eclip.value = s;
-
-    }
-
-
-</script>
-
-
-</body>
-
-</html>
+<
+/script> <
+/html>
